@@ -1,6 +1,5 @@
 #include "STM32F411xx_GPIO.h"
 #include "STM32F411xx_DMA.h"
-#include "STM32F411xx_SPI1.h"
 
 int main(void)
 {
