@@ -32,8 +32,6 @@ void DMA_StreamInit(DMA_STREAM_t* _stream, uint8_t _channel, uint8_t _msize, uin
 	_stream -> CR &= ~(1 << DMA_PINC);
 	_stream -> CR &= ~(1 << DMA_MINC);
 
-	_stream -> CR &= ~(3 << _pointer_mode);
-
 	switch(_pointer_mode)
 	{
 	case FIXED_MODE:
