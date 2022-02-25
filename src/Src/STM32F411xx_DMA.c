@@ -72,9 +72,12 @@ void DMA_StreamInit(DMA_STREAM_t* _stream, uint8_t _channel, uint8_t _msize, uin
 		_stream -> CR |=  (1 << DMA_MINC);
 		break;
 	}
-
 	_stream -> CR &= ~(3 << DMA_PL);
-	_stream -> CR |= (_priority << DMA_PL);
+	
+	if(_priority > DMA_LOW_PRIORITY)
+	{
+		_stream -> CR |= (_priority << DMA_PL);
+	}
 }
 
 void DMA_SelectChannel(DMA_STREAM_t* _stream, uint8_t _channel)
