@@ -32,17 +32,17 @@ void DMA_StreamInit(DMA_STREAM_t* _stream, uint8_t _channel, uint8_t _msize, uin
 	_stream -> CR &= ~(1 << DMA_PINC);
 	_stream -> CR &= ~(1 << DMA_MINC);
 
-	switch(_pointer_mode)
-	{
 	uint32_t scr = _stream -> CR;
 
+	switch(_pointer_mode)
+	{
 	case FIXED_MODE:
 		_stream -> CR &= ~(1 << DMA_PINC);
 		_stream -> CR &= ~(1 << DMA_MINC);
 		break;
 
 	case SOURCE_AUTO_INC:
-		if((scr & (1 << DMA_DIR)) == 1)				//MEMORY-TO-PERIPHERAL
+		if((scr & (1 << DMA_DIR)))					//MEMORY-TO-PERIPHERAL
 		{
 			_stream -> CR &= ~(1 << DMA_PINC);
 			_stream -> CR |=  (1 << DMA_MINC);
@@ -55,7 +55,7 @@ void DMA_StreamInit(DMA_STREAM_t* _stream, uint8_t _channel, uint8_t _msize, uin
 		break;
 
 	case DEST_AUTO_INC:
-		if((scr & (1 << DMA_DIR)) == 1)				//MEMORY-TO-PERIPHERAL
+		if((scr & (1 << DMA_DIR)))					//MEMORY-TO-PERIPHERAL
 		{
 			_stream -> CR |=  (1 << DMA_PINC);
 			_stream -> CR &= ~(1 << DMA_MINC);
@@ -73,7 +73,7 @@ void DMA_StreamInit(DMA_STREAM_t* _stream, uint8_t _channel, uint8_t _msize, uin
 		break;
 	}
 	_stream -> CR &= ~(3 << DMA_PL);
-	
+
 	if(_priority > DMA_LOW_PRIORITY)
 	{
 		_stream -> CR |= (_priority << DMA_PL);
