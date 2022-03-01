@@ -54,6 +54,34 @@
 #define TIM11EN  18U
 #define SPI5EN   20U
 
+//RCC -> APB1RSTR
+#define TIM2RST   0U
+#define TIM3RST   1U
+#define TIM4RST   2U
+#define TIM5RST   3U
+#define WWDGRST   11U
+#define SPI2RST   14U
+#define SPI3RST   15U
+#define USART2RST 17U
+#define I2C1RST   21U
+#define I2C2RST   22U
+#define I2C3RST   23U
+#define PWRRST    28U
+
+//RCC -> APB2RSTR
+#define TIM1RST   0U
+#define USART1RST 4U
+#define USART6RST 5U
+#define ADC1RST   8U
+#define SDIORST   11U
+#define SPI1RST   12U
+#define SPI4RST   13U
+#define SYSCFGRST 14U
+#define TIM9RST   16U
+#define TIM10RST  17U
+#define TIM11RST  18U
+#define SPI5RST   20U
+
 //SYSCFG
 #define EXTI0  	 0U
 #define EXTI1  	 4U
@@ -165,6 +193,17 @@ typedef struct 	 //I2C_POINTERS
 	uint32_t FLTR;
 }I2C_PERIPHERALS_t;
 
+typedef struct	 //USART_POINTERS
+{
+	uint32_t SR;
+	uint32_t DR;
+	uint32_t BRR;
+	uint32_t CR1;
+	uint32_t CR2;
+	uint32_t CR3;
+	uint32_t GTPR;
+}USART_PERIPHERALS_t;
+
 typedef struct 	  //EXTI_POINTERS
 {
 	uint32_t IMR;
@@ -212,23 +251,5 @@ typedef struct 	 //SYSCFG_POINTERS
 	uint32_t EXTICR[4];
 	uint32_t CMPCR;
 }SYSCFG_PERIPHERALS_t;
-
-typedef struct
-{
-	uint32_t LISR;
-	uint32_t HISR;
-	uint32_t LIFCR;
-	uint32_t HIFCR;
-}DMA_PERIPHERALS_t;
-
-typedef struct
-{
-	uint32_t CR;
-	uint32_t NDTR;
-	uint32_t PAR;
-	uint32_t M0AR;
-	uint32_t M1AR;
-	uint32_t FCR;
-}DMA_STREAM_t;
 
 #endif /* STM32F411XX_H_ */
