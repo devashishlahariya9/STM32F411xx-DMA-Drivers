@@ -1,4 +1,3 @@
-#include "STM32F411xx_GPIO.h"
 #include "STM32F411xx_DMA.h"
 
 int main(void)
