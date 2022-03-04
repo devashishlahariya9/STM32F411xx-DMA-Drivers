@@ -10,6 +10,7 @@
 
 #include <stdint.h>
 #include "STM32F411xx.h"
+#include "STM32F411xx_GPIO.h"
 
 //DMA->LISR
 #define DMA_FEIF0	0U
